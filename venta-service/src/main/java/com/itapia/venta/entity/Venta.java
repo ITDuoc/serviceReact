@@ -1,5 +1,6 @@
 package com.itapia.venta.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -23,16 +24,17 @@ public class Venta {
     private Double totalVenta;
 
     @Column(name = "id_usuario")
-    private Long idUsuario; // FK a usuario (solo el ID)
+    private Long idUsuario;
 
     @Column(name = "id_met_pago")
-    private Long idMetodoPago; // FK a metodo_pago (solo el ID)
+    private Long idMetodoPago;
 
     @Column(name = "id_est_venta")
-    private Long idEstadoVenta; // FK a estado_venta (solo el ID)
+    private Long idEstadoVenta;
 
     // Relación con detalles de venta
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<DetalleVenta> detalles;
 
     // Getters y Setters

@@ -1,5 +1,6 @@
 package com.itapia.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Noticia {
     private String detNoticia;
 
     @OneToMany(mappedBy = "noticia", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Comentario> comentarios;
 
     // Getters y setters

@@ -1,5 +1,6 @@
 package com.itapia.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -24,6 +25,7 @@ public class Comentario {
 
     @ManyToOne
     @JoinColumn(name = "id_noticia")
+    @JsonBackReference
     private Noticia noticia;
 
     // Getters y setters

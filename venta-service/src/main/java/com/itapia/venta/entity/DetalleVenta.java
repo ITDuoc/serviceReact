@@ -1,5 +1,6 @@
 package com.itapia.venta.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,13 +11,14 @@ public class DetalleVenta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long idProducto; // FK al micro de productos
+    private Long idProducto;
     private Integer cantidad;
     private Double precioUnitario;
     private Double subtotal;
 
     @ManyToOne
     @JoinColumn(name = "venta_id")
+    @JsonBackReference
     private Venta venta;
 
     // Getters y setters
